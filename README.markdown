@@ -563,19 +563,6 @@ file:
      * THE SOFTWARE.
      */
 
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred:**
-```
-:]
-```
-
-**Not Preferred:**
-```
-:)
-```  
 
 
 ## Credits
@@ -611,4 +598,9 @@ We also drew inspiration from Apple’s reference material on Swift:
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
-* 
+
+Additions by the We Heart It Coallition of Awesome iOS App Makers
+* [Rafael Kellermann Streit](https://github.com/rafaelks)
+* [Hernan Gonzalez](https://github.com/hernangonzalez)
+* [James Dunay](https://github.com/jdunay)
+* [Johnny Sparks](https://github.com/johnnyfuchs)
