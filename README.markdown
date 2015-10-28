@@ -37,8 +37,8 @@ Use descriptive names with camel case for classes, methods, variables, etc. Clas
 private let maximumWidgetCount = 100
 
 class WidgetContainer {
-  var widgetButton: UIButton
-  let widgetHeightPercentage = 0.85
+    var widgetButton: UIButton
+    let widgetHeightPercentage = 0.85
 }
 ```
 
@@ -48,8 +48,8 @@ class WidgetContainer {
 let MAX_WIDGET_COUNT = 100
 
 class app_widgetContainer {
-  var wBut: UIButton
-  let wHeightPct = 0.85
+    var wBut: UIButton
+    let wHeightPct = 0.85
 }
 ```
 
@@ -70,8 +70,8 @@ For methods, follow the standard Apple convention of referring to the first para
 
 ```swift
 class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
-  func upvoteBy(amount: Int) { ... }
+    func combineWithString(incoming: String, options: Dictionary?) { ... }
+    func upvoteBy(amount: Int) { ... }
 }
 ```
 
@@ -81,10 +81,10 @@ Use UpperCamelCase for enumeration values:
 
 ```swift
 enum Shape {
-  case Rectangle
-  case Square
-  case Triangle
-  case Circle
+    case Rectangle
+    case Square
+    case Triangle
+    case Circle
 }
 ```
 
@@ -166,38 +166,38 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
-  var x: Int, y: Int
-  var radius: Double
-  var diameter: Double {
-    get {
-      return radius * 2
+    var x: Int, y: Int
+    var radius: Double
+    var diameter: Double {
+       get {
+           return radius * 2
+       }
+       set {
+           radius = newValue / 2
+       }
     }
-    set {
-      radius = newValue / 2
+
+    init(x: Int, y: Int, radius: Double) {
+        self.x = x
+        self.y = y
+        self.radius = radius
     }
-  }
 
-  init(x: Int, y: Int, radius: Double) {
-    self.x = x
-    self.y = y
-    self.radius = radius
-  }
+    convenience init(x: Int, y: Int, diameter: Double) {
+        self.init(x: x, y: y, radius: diameter / 2)
+    }
 
-  convenience init(x: Int, y: Int, diameter: Double) {
-    self.init(x: x, y: y, radius: diameter / 2)
-  }
+    func describe() -> String {
+        return "I am a circle at \(centerString()) with an area of \(computeArea())"
+    }
 
-  func describe() -> String {
-    return "I am a circle at \(centerString()) with an area of \(computeArea())"
-  }
+    override func computeArea() -> Double {
+        return M_PI * radius * radius
+    }
 
-  override func computeArea() -> Double {
-    return M_PI * radius * radius
-  }
-
-  private func centerString() -> String {
-    return "(\(x),\(y))"
-  }
+    private func centerString() -> String {
+        return "(\(x),\(y))"
+    }
 }
 ```
 
@@ -217,16 +217,16 @@ Use `self` when required to differentiate between property names and arguments i
 
 ```swift
 class BoardLocation {
-  let row: Int, column: Int
+    let row: Int, column: Int
 
-  init(row: Int, column: Int) {
-    self.row = row
-    self.column = column
+    init(row: Int, column: Int) {
+      self.row = row
+      self.column = column
     
-    let closure = {
-      println(self.row)
-    }
-  }
+      let closure = {
+        println(self.row)
+      }
+   }
 }
 ```
 
@@ -239,7 +239,7 @@ Also, don't forget the `// MARK: -` comment to keep things well-organized!
 **Preferred:**
 ```swift
 class MyViewcontroller: UIViewController {
-  // class stuff here
+    // class stuff here
 }
 
 // MARK: - UITableViewDataSource
@@ -249,14 +249,14 @@ extension MyViewcontroller: UITableViewDataSource {
 
 // MARK: - UIScrollViewDelegate
 extension MyViewcontroller: UIScrollViewDelegate {
-  // scroll view delegate methods
+    // scroll view delegate methods
 }
 ```
 
 **Not Preferred:**
 ```swift
 class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // all methods
+    // all methods
 }
 ```
 
@@ -267,16 +267,16 @@ For conciseness, if a computed property is read-only, omit the get clause. The g
 **Preferred:**
 ```swift
 var diameter: Double {
-  return radius * 2
+    return radius * 2
 }
 ```
 
 **Not Preferred:**
 ```swift
 var diameter: Double {
-  get {
-    return radius * 2
-  }
+    get {
+        return radius * 2
+    }
 }
 ```
 
@@ -286,7 +286,7 @@ Keep short function declarations on one line including the opening brace:
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
-  // reticulate code goes here
+    // reticulate code goes here
 }
 ```
 
@@ -294,8 +294,8 @@ For functions with long signatures, add line breaks at appropriate points and ad
 
 ```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
-  // reticulate code goes here
+        translateConstant: Int, comment: String) -> Bool {
+    // reticulate code goes here
 }
 ```
 
@@ -307,30 +307,30 @@ Use trailing closure syntax only if there's a single closure expression paramete
 **Preferred:**
 ```swift
 UIView.animateWithDuration(1.0) {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 }
 
 UIView.animateWithDuration(1.0,
-  animations: {
-    self.myView.alpha = 0
-  },
-  completion: { finished in
-    self.myView.removeFromSuperview()
-  }
+    animations: {
+        self.myView.alpha = 0
+    },
+    completion: { finished in
+        self.myView.removeFromSuperview()
+    }
 )
 ```
 
 **Not Preferred:**
 ```swift
 UIView.animateWithDuration(1.0, animations: {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 })
 
 UIView.animateWithDuration(1.0,
-  animations: {
-    self.myView.alpha = 0
-  }) { f in
-    self.myView.removeFromSuperview()
+    animations: {
+        self.myView.alpha = 0
+    }) { f in
+        self.myView.removeFromSuperview()
 }
 ```
 
@@ -338,7 +338,7 @@ For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
 attendeeList.sort { a, b in
-  a > b
+    a > b
 }
 ```
 
@@ -384,7 +384,7 @@ Use optional binding when it's more convenient to unwrap once and perform multip
 
 ```swift
 if let textContainer = self.textContainer {
-  // do many things with textContainer
+    // do many things with textContainer
 }
 ```
 
@@ -409,9 +409,9 @@ var optionalSubview: UIView?
 var volume: Double?
 
 if let unwrappedSubview = optionalSubview {
-  if let realVolume = volume {
-    // do something with unwrappedSubview and realVolume
-  }
+    if let realVolume = volume {
+        // do something with unwrappedSubview and realVolume
+    }
 }
 ```
 
@@ -481,23 +481,23 @@ Prefer the `for-in` style of `for` loop over the `for-condition-increment` style
 **Preferred:**
 ```swift
 for _ in 0..<3 {
-  println("Hello three times")
+    println("Hello three times")
 }
 
 for (index, person) in enumerate(attendeeList) {
-  println("\(person) is at position #\(index)")
+    println("\(person) is at position #\(index)")
 }
 ```
 
 **Not Preferred:**
 ```swift
 for var i = 0; i < 3; i++ {
-  println("Hello three times")
+    println("Hello three times")
 }
 
 for var i = 0; i < attendeeList.count; i++ {
-  let person = attendeeList[i]
-  println("\(person) is at position #\(i)")
+    let person = attendeeList[i]
+    println("\(person) is at position #\(i)")
 }
 ```
 
@@ -611,3 +611,4 @@ We also drew inspiration from Apple’s reference material on Swift:
 * [The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html)
 * [Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html)
+* 
