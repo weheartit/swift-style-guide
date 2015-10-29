@@ -21,6 +21,7 @@
   * [Syntactic Sugar](#syntactic-sugar)
 * [Control Flow](#control-flow)
 * [Semicolons](#semicolons)
+* [Access Control](#access-control)
 * [Language](#language)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
@@ -521,6 +522,34 @@ let swift = "not a scripting language";
 ```
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
+
+## Access Control
+Starting on Swift 2.1 there are 3 different type of access: **public**, **private** & **internal (default)**. Since in mobile we will usually be working on the same module, all methods will end up as public within the App. To improve readability and limit access control to what's explicitly exposed, use a protocol to define the public interface of your class at the begining of your *.swift* file, then implement the class below and mark your private methods explicitly.
+
+```
+protocol MyClassInterface : NSObjectProtocol {
+    
+    /**
+     Explain your self dude.
+     */
+    func veryObviosPublicMethod()
+}
+
+
+class MyClass: NSObject, MyClassInterface {
+    let viewHeight = 33
+    
+    // MARK - Public
+    func veryObviosPublicMethod() {
+        
+    }
+    
+    // MARK - Private
+    private func somePrivateMethod() {
+        
+    }
+}
+```
 
 ## Language
 
